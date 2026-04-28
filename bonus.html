@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Win 999 - Luxury</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#000;
+color:#fff;
+}
+
+/* INTRO SCREEN */
+.intro{
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:10;
+animation:introFade 2.5s forwards;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+letter-spacing:2px;
+background:linear-gradient(90deg,#facc15,#f59e0b);
+-webkit-background-clip:text;
+color:transparent;
+animation:logoPop 1.2s ease;
+}
+
+@keyframes logoPop{
+0%{transform:scale(0.6);opacity:0;}
+100%{transform:scale(1);opacity:1;}
+}
+
+@keyframes introFade{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+/* BACKGROUND LIGHT */
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 50% 30%,#f59e0b22,transparent 60%);
+animation:bgMove 8s infinite alternate;
+z-index:-2;
+}
+
+@keyframes bgMove{
+0%{transform:scale(1);}
+100%{transform:scale(1.2);}
+}
+
+/* SOFT PARTICLES */
+.particle{
+position:absolute;
+width:3px;
+height:3px;
+background:#facc15;
+border-radius:50%;
+opacity:0.6;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-20vh);opacity:0;}
+}
+
+/* CARD */
+.card{
+width:85%;
+max-width:360px;
+padding:30px 20px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(30px);
+border:1px solid rgba(250,204,21,0.3);
+box-shadow:
+0 0 40px rgba(250,204,21,0.2),
+0 40px 120px rgba(0,0,0,0.9);
+text-align:center;
+opacity:0;
+transform:translateY(30px) scale(0.95);
+animation:cardEntry 1s ease forwards;
+animation-delay:2s;
+}
+
+@keyframes cardEntry{
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+/* LIGHT SWEEP */
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:50%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.3),transparent);
+transform:skewX(-25deg);
+animation:sweep 4s infinite;
+}
+
+@keyframes sweep{
+0%{left:-100%;}
+100%{left:150%;}
+}
+
+/* ICON */
+.icon{
+font-size:50px;
+animation:float 2s infinite ease-in-out;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+/* TEXT */
+h2{margin-top:10px;}
+
+.sub{
+font-size:13px;
+opacity:0.7;
+margin-bottom:15px;
+}
+
+/* AMOUNT */
+.amount{
+font-size:42px;
+font-weight:700;
+background:linear-gradient(135deg,#facc15,#f59e0b,#fde68a);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin:20px 0;
+}
+
+/* BUTTON */
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:30px;
+background:linear-gradient(135deg,#facc15,#f59e0b);
+color:#000;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px #facc15;
+}
+
+.btn:active{
+transform:scale(0.95);
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div class="intro">
+<div class="logo">WIN 999</div>
+</div>
+
+<div class="bg"></div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- CARD -->
+<div class="card">
+<div class="icon">💎</div>
+<h2>Exclusive Reward</h2>
+<div class="sub">Ultra premium welcome bonus</div>
+
+<div class="amount">₹250</div>
+
+<button class="btn" onclick="goTask()">Claim Now</button>
+</div>
+
+<script>
+// PARTICLES
+for(let i=0;i<25;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(p);
+}
+
+function goTask(){
+window.location.href="task.html";
+}
+</script>
+
+</body>
+</html>
